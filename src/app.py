@@ -4,14 +4,14 @@ from dash import Dash, dash_table, html, dcc, callback, Output, Input
 import plotly.express as px
 
 # somehow the head is 2nd row
-df1 = pd.read_excel('data\\2022_2023\\TeacherData.xlsx', header=1)
+df1 = pd.read_excel('data/2022_2023/TeacherData.xlsx', header=1)
 replace_value_df1 = {' to 1': ''}  # in the Excell it is "19.1 to 1"
 df1 =df1.replace({'Student / Teacher Ratio': replace_value_df1}, regex=True)
 
-df2 = pd.read_excel('data\\2022_2023\\ClassSizebyGenPopulation.xlsx', header=1)
+df2 = pd.read_excel('data/2022_2023/ClassSizebyGenPopulation.xlsx', header=1)
 df2 = df2.drop('District Name',axis=1)
 
-salary_20_21 = pd.read_excel('data\\2020_2021\\TeacherSalaries.xlsx', header=1)
+salary_20_21 = pd.read_excel('data/2020_2021/TeacherSalaries.xlsx', header=1)
 salary_20_21 = salary_20_21.drop('District Name',axis=1)
 salary_20_21 = salary_20_21.rename(columns={'Average Salary': 'Average Salary 2020-21', 'FTE Count':'FTE Count 2020-21','Salary Totals':'Salary Totals 2020-21'})
 replace_values = {',': '', '\$':''} # need to escape
