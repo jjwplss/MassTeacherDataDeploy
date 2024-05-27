@@ -70,7 +70,7 @@ app.layout = html.Div([
     dcc.Graph(id='graph-content'),
     dash_table.DataTable(data=df_merged.to_dict('records'), page_size=20),
 
-    html.A([html.H6('Any feedback?')], title ='email_me', href='mailto:cfaw.tickets@gmail.com')
+    html.A([html.H6('Any feedback?')], title ='email_me', href='mailto:__.__s@gmail.com')
 ])
 
 @callback(
