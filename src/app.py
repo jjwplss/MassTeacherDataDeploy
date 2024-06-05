@@ -45,17 +45,19 @@ for col in df_merged.columns[2:column_bound]:
 app = Dash(__name__)
 server = app.server
 app.layout = html.Div([
-    html.Div(children='Mass Teacher Data',style={'textAlign':'center'}),
+    html.Div(children='This is a tool for Massachusetts school teachers to compare salaries and other outcomes based on publicly available data',
+             style={'textAlign':'center',
+                    'font-size': '18px'}),
 
     html.Label('Select school district(s)'),
     # district dropdown
     dcc.Dropdown(df_merged['District'].unique(), 
-                 value = 'Lexington', 
+                 value = ['Arlington','Lexington'], 
                  id='district-selection',
                  multi=True),
     # select a measure
     #dcc.Dropdown(options=df_merged.columns.tolist(), value='Student / Teacher Ratio', id='my-ddk-radio-items-final'),
-    html.Label('Select a measure:'),
+    html.Label('Select an outcome:'),
     dcc.Dropdown(
         id='measure-dropdown',
         # For each column, it creates a dictionary with two keys: 'label' and 'value'. 
@@ -68,7 +70,8 @@ app.layout = html.Div([
         clearable=False
     ),
     dcc.Graph(id='graph-content'),
-    dash_table.DataTable(data=df_merged.to_dict('records'), page_size=20),
+    #html.Div(children='Raw data from the Department of Education',style={'textAlign':'left'}),
+    #dash_table.DataTable(data=df_merged.to_dict('records'), page_size=20),
 
     html.A([html.H6('Any feedback?')], title ='email_me', href='mailto:__.__s@gmail.com')
 ])
