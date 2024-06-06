@@ -45,19 +45,22 @@ for col in df_merged.columns[2:column_bound]:
 app = Dash(__name__)
 server = app.server
 app.layout = html.Div([
-    html.Div(children='This is a tool for Massachusetts school teachers to compare salaries and other outcomes based on publicly available data',
+    html.Div(children='A tool for Massachusetts public school teachers to compare salaries and other outcomes by district',
              style={'textAlign':'center',
-                    'font-size': '18px'}),
+                    'font-size': '24px'}),
+    html.Div(children='Version 0.1; data is based on 2023 Teacher Salaries Report from Massachusetts Department of Education',
+             style={'textAlign':'center',
+                    'font-size': '14px'}),
 
-    html.Label('Select school district(s)'),
+    html.Label('Select school districts', style={'fontSize': '20px'}),
     # district dropdown
     dcc.Dropdown(df_merged['District'].unique(), 
-                 value = ['Arlington','Lexington'], 
+                 value = ['Arlington','Lexington','Watertown'], 
                  id='district-selection',
                  multi=True),
     # select a measure
     #dcc.Dropdown(options=df_merged.columns.tolist(), value='Student / Teacher Ratio', id='my-ddk-radio-items-final'),
-    html.Label('Select an outcome:'),
+    html.Label('Select an outcome:', style={'fontSize': '20px'}),
     dcc.Dropdown(
         id='measure-dropdown',
         # For each column, it creates a dictionary with two keys: 'label' and 'value'. 
@@ -73,7 +76,7 @@ app.layout = html.Div([
     #html.Div(children='Raw data from the Department of Education',style={'textAlign':'left'}),
     #dash_table.DataTable(data=df_merged.to_dict('records'), page_size=20),
 
-    html.A([html.H6('Any feedback?')], title ='email_me', href='mailto:__.__s@gmail.com')
+    html.A([html.H3('Any feedback?')], title ='email_me', href='mailto:cfaw.tickets@gmail.com')
 ])
 
 @callback(
