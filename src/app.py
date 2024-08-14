@@ -34,7 +34,7 @@ df_merged = df_merged.rename(columns={'District Name': 'District', '_merge':'Mer
 # selected = df_merged[df_merged['District'].isin(['Boston','Worcester','Springfield'])]
 #df_merged.shape
 
-# 1. replace "123,4.9" with "1234.9"; 2. convert "1234.9" to numeric
+# 1. replace "123,4.9" with "1234.9"; 2. Then, convert "1234.9" to numeric
 column_bound = len(df_merged.columns) - 1
 for col in df_merged.columns[2:column_bound]:
     # astype(float) cannot convert 11.9 to 11

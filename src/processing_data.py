@@ -2,7 +2,7 @@ import pandas as pd
 import os as os
 from dash import Dash, dash_table, html, dcc, callback, Output, Input
 import plotly.express as px
-
+## the scripts not used in actual deployment, but to explore the data
 # somehow the head is 2nd row
 df1 = pd.read_excel('C:\\Users\\kansa\\Documents\\MassTeacherData\\data\\2022_2023\\TeacherData.xlsx', header=1)
 #df1.head(5)
