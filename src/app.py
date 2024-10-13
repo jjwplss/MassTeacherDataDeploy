@@ -9,7 +9,7 @@ replace_value_df1 = {' to 1': ''}  # in the Excell it is "19.1 to 1"
 df1 =df1.replace({'Student / Teacher Ratio': replace_value_df1}, regex=True)
 
 df2 = pd.read_excel('data/2022_2023/ClassSizebyGenPopulation.xlsx', header=1)
-df2 = df2.drop('District Name',axis=1)
+df2 = df2.drop('District Name', axis=1)
 
 salary_20_21 = pd.read_excel('data/2020_2021/TeacherSalaries.xlsx', header=1)
 salary_20_21 = salary_20_21.drop('District Name',axis=1)
@@ -26,6 +26,7 @@ df_merged = pd.merge(df_m, salary_20_21, on='District Code', how='left', indicat
 # df_merged['_merge'].value_counts()
 # df_merged[df_merged['_merge']!='both']
 df_merged = df_merged.rename(columns={'District Name': 'District', '_merge':'Merge Status'})
+df_merged = df_merged.drop('Merge Status',axis=1)
 #df_merged = df_merged.rename(columns={})
 
 # remove the row of State Total, sort by a column and get the first 10 rows
