@@ -4,6 +4,7 @@ from dash import Dash, dash_table, html, dcc, callback, Output, Input
 import plotly.express as px
 
 # somehow the head is 2nd row
+# Data source: https://profiles.doe.mass.edu/statereport/
 df1 = pd.read_excel('data/2022_2023/TeacherData.xlsx', header=1)
 replace_value_df1 = {' to 1': ''}  # in the Excell it is "19.1 to 1"
 df1 =df1.replace({'Student / Teacher Ratio': replace_value_df1}, regex=True)
